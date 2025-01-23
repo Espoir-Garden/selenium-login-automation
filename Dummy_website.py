@@ -1,3 +1,4 @@
+
 from selenium import webdriver
 # getting the chrome driver path 4 11
 from selenium.webdriver.chrome.service import Service
@@ -9,6 +10,8 @@ from selenium.webdriver.common.keys import Keys
 # from selenium.webdriver.support.ui import WebDriverWait
 
 import time
+
+from selenium.webdriver.support.select import Select
 
 service = Service(executable_path="C:\\Browserdrivers\\chromedriver.exe")
 
@@ -22,7 +25,15 @@ driver.find_element(By.NAME, "email").send_keys("olamilekan@example.com")
 driver.find_element(By.ID, "exampleInputPassword1").send_keys("12345qwerty")
 time.sleep(5)
 driver.find_element(By.ID, "exampleCheck1").click()
-driver.find_element(By.ID, "exampleFormControlSelect1").send_keys("Male")
+# The code below handles static dropdown on the website from ln 28 - 34
+dropdown = Select(driver.find_element(By.ID, "exampleFormControlSelect1"))
+dropdown.select_by_index(0)
+time.sleep(4)
+dropdown.select_by_visible_text("Female")
+time.sleep(4)
+dropdown.select_by_visible_text("Male")
+
+# driver.find_element(By.ID, "exampleFormControlSelect1").send_keys("Male")
 driver.find_element(By.CLASS_NAME, "form-check-input").click()
 driver.find_element(By.NAME, "bday").send_keys("09/29/1999")
 driver.find_element(By.XPATH, "//input[@class = 'btn btn-success']").click()
