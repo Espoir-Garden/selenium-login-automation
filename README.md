@@ -17,5 +17,8 @@ Example Output: Success! The form has been successfully submitted.
 ProtoCommerce https://rahulshettyacademy.com/angularpractice
 
 
+This is only for Educational purposes only
+
+
 
 
